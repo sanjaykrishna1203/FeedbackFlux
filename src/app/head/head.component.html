@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark nav-blue justify-content-between">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="">
+        <img src="../../assets/logo.png" height="50" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse   navbar-collapse" id="navbarSupportedContent">
+        <ng-template [ngIf]="startService.userReady">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="/dashboard"><mat-icon class="mat-icon notranslate align-middle material-icons-outlined mat-icon-no-color"  data-mat-icon-namespace="material-icons-outlined" aria-hidden="false" aria-label="" fontIcon="dashboard"></mat-icon>&nbsp;Dashboard</a>
+              </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/add-form"><mat-icon class="mat-icon notranslate align-middle material-icons-outlined mat-icon-no-color"  data-mat-icon-namespace="material-icons-outlined" aria-hidden="false" aria-label="" fontIcon="add_box"></mat-icon>&nbsp;Add form</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/my-forms"><mat-icon class="mat-icon notranslate align-middle material-icons-outlined mat-icon-no-color"  data-mat-icon-namespace="material-icons-outlined" aria-hidden="false" aria-label="" fontIcon="collections_bookmark"></mat-icon>&nbsp;My Forms</a>
+          </li>
+          
+        </ul></ng-template>
+        <ng-template [ngIf]="!startService.userReady">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <div class="px-5 mx-5 nav-link"> </div>
+            </li>
+          
+        </ul>
+        </ng-template>
+        <form class="d-flex ">
+          
+          <ng-template [ngIf]="startService.userReady">
+            
+           <p class="text-white px-3 pt-2"> {{startService.userData.email}}</p>
+            <button class="btn btn-secondary" (click)="logout()"  type="submit">Logout</button>
+          </ng-template>
+          <ng-template [ngIf]="!startService.userReady" class="float:right !important">
+            <button class="btn login" style="float: right !important;"  routerLink="/login" type="submit">Login</button>
+          </ng-template>
+        </form>
+      </div>
+    </div>
+  </nav>

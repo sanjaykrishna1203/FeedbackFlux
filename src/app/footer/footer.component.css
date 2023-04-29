@@ -1,0 +1,8 @@
+.fixed-bottom {
+    background-color: #00529D;
+    color: #fff;
+    position: fixed;
+    height: 25px;
+    bottom: 0;
+    z-index: 99999;
+}

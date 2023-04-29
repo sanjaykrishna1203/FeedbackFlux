@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-6 text-center" style="padding-top:170px ;">
+        <div class="text-center">
+            <mat-icon class="mat-icon  align-middle material-icons-outlined" style="color: green; font-size: 50px; height: 50px;width: 50px; ;"  data-mat-icon-namespace="material-icons-outlined"  aria-hidden="false" aria-label="" fontIcon="task_alt"></mat-icon>
+        </div>
+
+        <h1 class="text-center" style="color: green;">Congratulations!<br><span style="color: #EEA47F;"> Your Form is Successfully created</span></h1>
+        <br>
+        <p>Here is your Sharable link, Share it with your customers and get your feedback!</p><br>
+        <a [href]="url">{{url}}</a> &nbsp;
+        <mat-icon [cdkCopyToClipboard]="url" class="mat-icon notranslate align-middle material-icons-outlined mat-icon-no-color" style="cursor: pointer;"  data-mat-icon-namespace="material-icons-outlined"  aria-hidden="false" aria-label="" fontIcon="content_copy"></mat-icon>
+
+    </div>
+    <div class="col-6 text-center" style="padding-top:120px ;">
+        <h1>Here you go!<br>Here is the Sharable QR</h1>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data={{url}}"  alt="QR_GENERATION_FAILED"><br><br>
+        <a href="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data={{url}}" download>
+            <mat-icon class="mat-icon  align-middle material-icons-outlined blink_me" style="color:black; font-size: 50px; height: 50px;width: 50px; ;"  data-mat-icon-namespace="material-icons-outlined"  aria-hidden="false" aria-label="" fontIcon="download"></mat-icon>
+        </a>
+    </div>
+</div>

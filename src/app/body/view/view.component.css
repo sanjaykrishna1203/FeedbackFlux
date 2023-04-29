@@ -1,0 +1,15 @@
+.background{
+    background-color:#f9f9f9;
+}
+
+hr{
+    height: 5px;
+    background-color: #00529D !important;
+    border: none;
+}
+
+hr.bord {
+    border: 1px solid grey ;
+    background-color: grey;
+    height: 1px;
+}

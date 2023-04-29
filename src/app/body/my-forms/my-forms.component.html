@@ -1,0 +1,35 @@
+<div class="text-center pt-2">
+    <h1>My Forms</h1>
+</div>
+<hr>
+
+<div class="row px-4">
+    <div class="col-md-12 col-lg-6 p-2" *ngFor="let item of formService.userForms; let i = index">
+
+        <div class="card p-3" style="height: 250px; overflow-y: auto;">
+            <div class="row">
+                <div class="col-8">
+                    <h1>{{item.Title}}</h1>
+                    <h5>Created At : {{dateTime(item.CreatedAt)}}</h5>
+                    <h2>Url :&nbsp;<a style="font-size: 15px;" [href]="url+item.Id">{{url+item.Id}}</a> &nbsp;
+                        <mat-icon [cdkCopyToClipboard]="url"
+                            class="mat-icon notranslate align-middle material-icons-outlined mat-icon-no-color"
+                            style="cursor: pointer;" data-mat-icon-namespace="material-icons-outlined"
+                            aria-hidden="false" aria-label="" fontIcon="content_copy"></mat-icon>
+                    </h2>
+                    <button class="btn pb-2" [routerLink]="'/form-responses/'+item.Id" style="background-color: #00529D; color: white;">View Responses</button>
+                </div>
+                <div class="col-4">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{url+item.Id}}"
+                        alt="QR_GENERATION_FAILED">
+                    <a href="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data={{url+item.Id}}" download>
+                        <mat-icon class="mat-icon  align-middle material-icons-outlined blink_me"
+                            style="color:black; font-size: 30px;" data-mat-icon-namespace="material-icons-outlined"
+                            aria-hidden="false" aria-label="" fontIcon="download"></mat-icon>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

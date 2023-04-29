@@ -1,0 +1,41 @@
+<div class="background" style="min-height: 90vh; padding-bottom: 50px;">
+    <div style="margin: auto;width: 50%; box-shadow: 5px 10px 18px #888888; background-color: white;border-radius: 10px;"
+        class="mt-2">
+        <div class="" style="min-height: 50vh;">
+            <h1 class="text-center pt-3" style="font-size: 30px;">{{formService.form.Title}}</h1>
+            <hr>
+            <div class="p-2" *ngFor="let item of formService.form.Fields; index as i;">
+
+                <!-- Open Question -->
+                <div class=" p-2" *ngIf="item.type == 'Open'">
+                    <h2> {{item.question.text}}<span style="color:red" *ngIf="item.required">*</span></h2>
+                    <input type="text" class="form-control" [(ngModel)]="formService.form.Fields[i].response" [placeholder]="item.question.placeholder">
+                </div>
+
+                <!-- Multiple Choice Question -->
+                <div class=" p-2" *ngIf="item.type == 'Multiple'">
+                    <h2> {{item.question.text}}<span style="color:red" *ngIf="item.required">*</span></h2>
+                    <div *ngFor="let opt of item.question.offeredAnswers">
+                        <div class="form-check">
+                            <input class="form-check-input" [(ngModel)]="formService.form.Fields[i].response" type="radio" name="exampleRadios" id="exampleRadios1"
+                                [value]="opt.text" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                {{opt.text}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rating Question -->
+                <div class=" p-2" *ngIf="item.type == 'Rating'">
+                    <h2> {{item.question.text}}<span style="color:red" *ngIf="item.required">*</span></h2>
+                    <star-rating  ngDefaultControl   (ratingChange)="onRatingChange($event, i)" size="large" [hoverEnabled]="true" ></star-rating>
+                </div>
+                <hr class="bord">
+            </div>
+            <div class="d-flex justify-content-end pb-3 px-3">
+                <button style="background-color: #00529D !important;" (click)="submit()" class="btn btn-primary ">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

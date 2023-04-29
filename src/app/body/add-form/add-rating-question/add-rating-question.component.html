@@ -1,0 +1,25 @@
+<div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 style="margin:0px !important" class="modal-title" id="exampleModalLabel">Add Rating Question</h2>
+          <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="question">Question</label>
+                <input type="text" [(ngModel)]="question.question.text" class="form-control" id="question"
+                    placeholder="Write your Question here...">
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" [(ngModel)]="question.required" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1" >Required</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="add()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>

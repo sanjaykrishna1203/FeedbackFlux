@@ -1,0 +1,56 @@
+<div style="overflow-x:hidden;">
+
+    <div class="row">
+        <div class="col-md-2" *ngIf="formService.userForms.length > 0">
+            <div class="wrapper d-flex">
+                <div class="sidebar">
+                    <ul class="noPadding">
+                        <li *ngFor="let item of formService.userForms[selectedFormIndex].Fields; let i = index;"
+                            (click)="changeQuestionIndex(i)" [ngClass]="{'bgChanged':i == selectedQuestionIndex}">
+                            <a>{{item.question.text}}</a>
+                            <!-- @todo: when no response for  -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-2" style="margin: auto; width: 50%;">
+            <div class=" hovDiv" *ngIf="formService.userForms.length == 0">
+                <h1>
+                    Start by adding your First form
+                </h1>
+                <button routerLink="/add-form" class="btn hov btn-outline-dark"><mat-icon
+                        class="mat-icon notranslate align-middle material-icons-outlined mat-icon-no-color"
+                        data-mat-icon-namespace="material-icons-outlined" aria-hidden="false" aria-label=""
+                        fontIcon="add_circle"></mat-icon>&nbsp;Create Form</button>
+            </div>
+            <div class="form-group row" *ngIf="formService.userForms.length > 1">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Select Form</label>
+                <div class="form-group col-sm-10">
+                    <select id="inputState" [(ngModel)]="selectedFormIndex" (change)="updateSelectedForm()"
+                        class="form-select">
+                        <option *ngFor="let form of formService.userForms; let i = index" [value]="i">{{form.Title + ' '
+                            + i}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center" style="padding-left: 250px; display: flex;justify-content: center;" *ngIf="formService.userForms.length > 0">
+          
+            <div class="col-12 card p-2 m-1 text-center" style="height:40vh !important">
+               
+                <h1 *ngIf="formService.userForms[selectedFormIndex].Fields[selectedQuestionIndex].type == 'Open'">
+                    Sentiment Analyisis Report</h1>
+                <ngx-charts-pie-chart [results]="formService.dashboardData[selectedQuestionIndex]" [legend]="showLegend"
+                    [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut">
+                </ngx-charts-pie-chart>
+            </div>
+            <div class="col-12 card p-2 m-1">
+                <ngx-charts-pie-grid *ngIf="formService.userForms[selectedFormIndex].Fields[selectedQuestionIndex].type != 'Rating'" [results]="formService.dashboardData[selectedQuestionIndex]"></ngx-charts-pie-grid>
+                <div *ngIf="formService.userForms[selectedFormIndex].Fields[selectedQuestionIndex].type == 'Rating'" class="p-5">
+                    <h1 class="text-center">Average Rating</h1>
+                    <star-rating  ngDefaultControl  [rating]="ratingAverage" size="large" [hoverEnabled]="false" ></star-rating>
+                </div>
+            </div>
+        </div>
+    </div>

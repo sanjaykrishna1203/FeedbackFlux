@@ -1,0 +1,36 @@
+.btn-outline-dark:hover{
+
+    background-color: #00529D !important;
+}
+
+.wrapper{
+	position: relative;
+}
+.sidebar{
+	position: fixed;
+	width: 200px;
+	height: 100%;
+	background: #00529D;
+	padding: 10px 0;
+	    
+}
+.wrapper .sidebar ul li{
+	padding: 15px;	
+    cursor: pointer;
+    border-radius: 5px;
+}
+.wrapper .sidebar ul li{
+	color: #fff;
+	display: block;
+}
+.wrapper .sidebar ul li:hover{
+	background: #6C757D !important;
+}
+
+.noPadding {
+    padding-left: 0px !important;
+}
+
+.bgChanged{
+    background-color: #6C757D;
+}
